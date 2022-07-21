@@ -50,6 +50,8 @@ def get_connection(config, username=None, password=None):
 def get_user_password(user, disable=False):
     """Return ready-to-use password from user instance."""
     scheme, password = user.password.split("}")
+    if settings.LDAP_DROP_CRYPT_PREFIX:
+        scheme = "{CRYPT"
     return (
         force_bytes(scheme) +
         b"}" +
