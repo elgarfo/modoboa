@@ -53,7 +53,7 @@ def get_user_password(user, disable=False):
     return (
         force_bytes(scheme) +
         b"}" +
-        b"#" if disable else b"" +
+        (b"#" if disable else b"") +
         force_bytes(password)
     )
 
